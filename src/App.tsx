@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { InputForAdd } from 'components';
 import { getTodolistsAC } from 'store/actions';
 import { selectTodolists } from 'store/selectors';
-import { addTodolistTC } from 'store/thunks/todolistThunks';
+import { addTodolistTC, deleteTodolistTC } from 'store/thunks';
 
 const App = (): ReactElement => {
   const dispatch = useDispatch();
@@ -17,11 +17,16 @@ const App = (): ReactElement => {
     dispatch(addTodolistTC(newTitle));
   };
 
+  const deleteTodolist = (id: string): void => {
+    // @ts-ignore
+    dispatch(deleteTodolistTC(id));
+  };
+
   useEffect(() => {
     fetch('https://6311e8fc19eb631f9d7b7f47.mockapi.io/todosYesis')
       .then(res => res.json())
       .then(data => dispatch(getTodolistsAC(data)));
-  }, [dispatch]);
+  }, []);
 
   return (
     <div className="App">
@@ -30,6 +35,9 @@ const App = (): ReactElement => {
       {state?.map(td => (
         <div key={td.id}>
           <span>{td.text}</span>
+          <button type="button" onClick={() => deleteTodolist(td.id)}>
+            Delete
+          </button>
         </div>
       ))}
     </div>
