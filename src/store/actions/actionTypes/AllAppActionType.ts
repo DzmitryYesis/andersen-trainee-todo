@@ -1,3 +1,4 @@
+import { MenuActionsType } from './menuActionsType';
 import { TodolistActionType } from './todolistActionTypes';
 
-export type AllAppActionType = TodolistActionType;
+export type AllAppActionType = TodolistActionType | MenuActionsType;

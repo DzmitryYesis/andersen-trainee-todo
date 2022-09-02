@@ -7,4 +7,6 @@ export {
   deleteTodolistAC,
 } from './todolistActions';
 
+export { IS_SHOW_POP_UP, isShowPopUpAC } from './menuActions';
+
 export type { AllAppActionType } from './actionTypes';

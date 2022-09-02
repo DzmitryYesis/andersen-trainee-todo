@@ -1,0 +1,17 @@
+.menu {
+    max-width: 450px;
+    width: 500px;
+    border-radius: 8px;
+    top: 30%;
+    position: fixed;
+    right: 35%;
+    background: #ffffff;
+    padding: 0 0 18px 16px;
+    color: #092878;
+    font-size: 16px;
+    letter-spacing: 0.3px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 999;
+}
