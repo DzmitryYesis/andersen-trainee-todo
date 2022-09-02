@@ -1,21 +1,19 @@
-import React, { ReactElement, useEffect, useState } from 'react';
+import React, { ReactElement, useEffect } from 'react';
 
 import './App.css';
+import { useDispatch, useSelector } from 'react-redux';
 
-type DataType = {
-  text: string;
-  isFavourite: boolean;
-  isCompleted: boolean;
-  id: string;
-};
+import { getTodolistsAC } from 'store/actions';
+import { selectTodolists } from 'store/selectors';
 
 const App = (): ReactElement => {
-  const [state, setState] = useState<DataType[]>();
+  const dispatch = useDispatch();
+  const state = useSelector(selectTodolists);
 
   useEffect(() => {
     fetch('https://6311e8fc19eb631f9d7b7f47.mockapi.io/todosYesis')
       .then(res => res.json())
-      .then(data => setState(data));
+      .then(data => dispatch(getTodolistsAC(data)));
   }, []);
 
   return (
