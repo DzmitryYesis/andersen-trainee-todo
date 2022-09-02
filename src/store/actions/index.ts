@@ -1,3 +1,8 @@
-export { GET_TODOLISTS, getTodolistsAC } from './todolistActions';
+export {
+  GET_TODOLISTS,
+  ADD_TODOLIST,
+  getTodolistsAC,
+  addTodolistAC,
+} from './todolistActions';
 
 export type { AllAppActionType } from './actionTypes';

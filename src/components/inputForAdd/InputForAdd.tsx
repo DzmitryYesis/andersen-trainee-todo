@@ -47,6 +47,7 @@ export const InputForAdd = ({ item }: InputForAddPropsType): ReactElement => {
       <button onClick={addTaskHandler} type="button">
         Add
       </button>
+      {title}
     </div>
   );
 };

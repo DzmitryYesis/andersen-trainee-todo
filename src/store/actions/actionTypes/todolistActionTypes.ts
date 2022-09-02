@@ -1,3 +1,5 @@
-import { getTodolistsAC } from 'store/actions';
+import { addTodolistAC, getTodolistsAC } from 'store/actions';
 
-export type TodolistActionType = ReturnType<typeof getTodolistsAC>;
+export type TodolistActionType =
+  | ReturnType<typeof getTodolistsAC>
+  | ReturnType<typeof addTodolistAC>;
