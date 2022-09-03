@@ -1,0 +1,21 @@
+.todolistWrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 400px;
+}
+
+.buttonStarWrapper {
+    height: 40px;
+    width: 30px;
+}
+
+.buttonStar {
+    background-color: white;
+    border: white;
+}
+
+.starImg {
+    height: 25px;
+    width: 25px;
+}

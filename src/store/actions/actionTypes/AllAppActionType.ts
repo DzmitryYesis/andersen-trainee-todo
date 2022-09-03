@@ -1,3 +1,4 @@
+import { FilterActionsType } from './filterActionsType';
 import { TodolistActionType } from './todolistActionTypes';
 
-export type AllAppActionType = TodolistActionType;
+export type AllAppActionType = TodolistActionType | FilterActionsType;

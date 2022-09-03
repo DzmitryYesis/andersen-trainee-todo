@@ -1,8 +1,8 @@
 import { ChangeEvent, ReactElement, useState, KeyboardEvent } from 'react';
 
-type InputForAddPropsType = {
-  item: (newTitle: string) => void;
-};
+import { Button } from 'components';
+import './InputForAdd.css';
+import { InputForAddPropsType } from 'types';
 
 const CHAR_CODE = 13;
 
@@ -40,13 +40,12 @@ export const InputForAdd = ({ item }: InputForAddPropsType): ReactElement => {
   return (
     <div>
       <input
+        className="inputForAdd"
         value={title}
         onChange={onChangeTitleHandler}
         onKeyPress={addTaskOnKeyPressHandler}
       />
-      <button onClick={addTaskHandler} type="button">
-        Add
-      </button>
+      <Button title="Add" onClick={addTaskHandler} />
     </div>
   );
 };

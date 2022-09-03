@@ -1,3 +1,10 @@
 export type { TodolistType, TodolistDomainType } from './todolistTypes';
 
-export type { MenuType } from './menuTypes';
+export type { FilterReducerType, FilterType } from './filterTypes';
+
+export type {
+  InputForAddPropsType,
+  ButtonTypeProps,
+  TodolistPropsType,
+  SpanChangeTitlePropsType,
+} from './componentTypes';

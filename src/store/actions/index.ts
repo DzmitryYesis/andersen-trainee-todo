@@ -17,4 +17,6 @@ export {
   isEditAC,
 } from './todolistActions';
 
+export { CHANGE_FILTER, changeFilterAC } from './filterActions';
+
 export type { AllAppActionType } from './actionTypes';

@@ -1,11 +1,6 @@
 import React, { ChangeEvent, KeyboardEvent, ReactElement, useState } from 'react';
 
-type SpanChangeTitlePropsType = {
-  isEdit: boolean;
-  title: string;
-  onChange: (newTitle: string) => void;
-  isCompleted: boolean;
-};
+import { SpanChangeTitlePropsType } from 'types';
 
 const CHAR_CODE = 13;
 

@@ -1,3 +1,3 @@
 export { todolistReducer } from './todolistReducer';
 
-export { menuReducer } from './menuReducer';
+export { filterReducer } from 'store/reducers/filterReducer';
