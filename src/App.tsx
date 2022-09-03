@@ -38,7 +38,7 @@ const App = (): ReactElement => {
 
   return (
     <div className="App">
-      Todolist test 2
+      <p>Add new Todolist</p>
       <InputForAdd item={addTodolist} />
       <div className="todolistFilterBlock">
         <FilterComponent />

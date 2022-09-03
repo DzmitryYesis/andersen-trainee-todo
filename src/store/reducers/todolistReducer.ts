@@ -7,6 +7,7 @@ import {
   DELETE_TODOLIST,
   GET_TODOLISTS,
   IS_EDIT,
+  IS_SHOW_DELETE_WINDOW,
   IS_SHOW_POP_UP,
 } from 'store/actions';
 import { TodolistDomainType } from 'types';
@@ -23,11 +24,17 @@ export const todolistReducer = (
         ...td,
         isShowPopUp: false,
         isEdit: false,
+        isShowDeleteWindow: false,
       }));
     case ADD_TODOLIST:
       return [
         ...state,
-        { ...action.payload.todolist, isShowPopUp: false, isEdit: false },
+        {
+          ...action.payload.todolist,
+          isShowPopUp: false,
+          isEdit: false,
+          isShowDeleteWindow: false,
+        },
       ];
     case DELETE_TODOLIST:
       return state.filter(td => td.id !== action.payload.id);
@@ -50,6 +57,12 @@ export const todolistReducer = (
     case IS_EDIT:
       return state.map(td =>
         td.id === action.payload.id ? { ...td, isEdit: action.payload.value } : td,
+      );
+    case IS_SHOW_DELETE_WINDOW:
+      return state.map(td =>
+        td.id === action.payload.id
+          ? { ...td, isShowDeleteWindow: action.payload.value }
+          : td,
       );
     default:
       return state;

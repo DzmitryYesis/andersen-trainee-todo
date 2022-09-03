@@ -2,5 +2,10 @@
     height: 30px;
     width: 250px;
     border-radius: 5px;
-    margin: 10px;
+    margin: 1px;
+}
+
+.errorDiv {
+    height: 20px;
+    color: red;
 }

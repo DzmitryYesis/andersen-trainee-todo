@@ -9,3 +9,5 @@ export { Todolist } from './todolist';
 export { FilterComponent } from './filter';
 
 export { Button } from './customButton';
+
+export { DeletePortal } from './deletePortal';

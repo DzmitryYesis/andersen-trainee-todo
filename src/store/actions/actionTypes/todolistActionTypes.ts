@@ -7,6 +7,7 @@ import {
   getTodolistsAC,
   isShowPopUpAC,
   isEditAC,
+  isShowDeleteWindowAC,
 } from 'store/actions';
 
 export type TodolistActionType =
@@ -17,4 +18,5 @@ export type TodolistActionType =
   | ReturnType<typeof changeCompletedStatusAC>
   | ReturnType<typeof changeTodolistTitleAC>
   | ReturnType<typeof isShowPopUpAC>
-  | ReturnType<typeof isEditAC>;
+  | ReturnType<typeof isEditAC>
+  | ReturnType<typeof isShowDeleteWindowAC>;

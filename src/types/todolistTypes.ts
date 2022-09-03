@@ -8,4 +8,5 @@ export type TodolistType = {
 export type TodolistDomainType = TodolistType & {
   isShowPopUp: boolean;
   isEdit: boolean;
+  isShowDeleteWindow: boolean;
 };

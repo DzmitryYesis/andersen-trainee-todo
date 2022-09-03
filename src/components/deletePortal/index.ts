@@ -1,0 +1,1 @@
+export { DeletePortal } from './DeletePortal';

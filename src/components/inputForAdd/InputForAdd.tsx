@@ -5,6 +5,7 @@ import './InputForAdd.css';
 import { InputForAddPropsType } from 'types';
 
 const CHAR_CODE = 13;
+const LIMIT = 5;
 
 export const InputForAdd = ({ item }: InputForAddPropsType): ReactElement => {
   const [title, setTitle] = useState('');
@@ -20,10 +21,12 @@ export const InputForAdd = ({ item }: InputForAddPropsType): ReactElement => {
   };
 
   const onChangeTitleHandler = (e: ChangeEvent<HTMLInputElement>): void => {
+    setTitle(e.currentTarget.value);
     if (error !== null) {
       setError(null);
+    } else if (title.length > LIMIT) {
+      setError(`Exceeded text limit on ${Math.abs(LIMIT - title.length)} characters`);
     }
-    setTitle(e.currentTarget.value);
   };
 
   const addTaskOnKeyPressHandler = (e: KeyboardEvent<HTMLInputElement>): void => {
@@ -39,13 +42,16 @@ export const InputForAdd = ({ item }: InputForAddPropsType): ReactElement => {
 
   return (
     <div>
-      <input
-        className="inputForAdd"
-        value={title}
-        onChange={onChangeTitleHandler}
-        onKeyPress={addTaskOnKeyPressHandler}
-      />
-      <Button title="Add" onClick={addTaskHandler} />
+      <div>
+        <input
+          className="inputForAdd"
+          value={title}
+          onChange={onChangeTitleHandler}
+          onKeyPress={addTaskOnKeyPressHandler}
+        />
+        <Button title="Add" onClick={addTaskHandler} />
+      </div>
+      <div className="errorDiv">{error}</div>
     </div>
   );
 };
