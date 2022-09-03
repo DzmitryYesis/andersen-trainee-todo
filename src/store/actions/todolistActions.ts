@@ -5,6 +5,7 @@ export const ADD_TODOLIST = 'TODOLISTS/ADD-TODOLIST';
 export const DELETE_TODOLIST = 'TODOLISTS/DELETE-TODOLIST';
 export const CHANGE_FAVOURITE_STATUS = 'TODOLISTS/CHANGE-FAVOURITE-STATUS';
 export const CHANGE_COMPLETED_STATUS = 'TODOLISTS/CHANGE-COMPLETED-STATUS';
+export const CHANGE_TODOLIST_TITLE = 'TODOLISTS/CHANGE-TODOLIST-TITLE';
 
 export const getTodolistsAC = (todolists: TodolistType[]) =>
   ({
@@ -42,6 +43,15 @@ export const changeFavouriteStatusAC = (id: string, value: boolean) =>
 export const changeCompletedStatusAC = (id: string, value: boolean) =>
   ({
     type: CHANGE_COMPLETED_STATUS,
+    payload: {
+      id,
+      value,
+    },
+  } as const);
+
+export const changeTodolistTitleAC = (id: string, value: string) =>
+  ({
+    type: CHANGE_TODOLIST_TITLE,
     payload: {
       id,
       value,

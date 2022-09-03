@@ -3,4 +3,5 @@ export {
   deleteTodolistTC,
   changeFavouriteStatusTC,
   changeCompletedStatusTC,
+  changeTodolistTitleTC,
 } from './todolistThunks';
