@@ -8,4 +8,6 @@ export type {
   TodolistPropsType,
   SpanChangeTitlePropsType,
   MenuAndButtonsPropsType,
+  DeleteWindowPropsType,
+  DeletePortalPropsType,
 } from './componentTypes';

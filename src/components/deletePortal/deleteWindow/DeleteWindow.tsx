@@ -5,11 +5,7 @@ import { useDispatch } from 'react-redux';
 import { Button } from 'components';
 import { isShowDeleteWindowAC } from 'store/actions';
 import './DeleteWindow.css';
-
-export type DeleteWindowPropsType = {
-  deleteTodolist: () => void;
-  id: string;
-};
+import { DeleteWindowPropsType } from 'types';
 
 export const DeleteWindow = ({
   deleteTodolist,

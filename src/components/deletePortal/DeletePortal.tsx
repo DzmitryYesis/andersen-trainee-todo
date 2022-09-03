@@ -4,11 +4,7 @@ import ReactDOM from 'react-dom';
 
 import { DeleteWindow } from './deleteWindow';
 
-export type DeletePortalPropsType = {
-  isShowDeleteWindow: boolean;
-  deleteTodolist: () => void;
-  id: string;
-};
+import { DeletePortalPropsType } from 'types';
 
 export const DeletePortal = ({
   isShowDeleteWindow,

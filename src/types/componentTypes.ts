@@ -31,3 +31,14 @@ export type MenuAndButtonsPropsType = {
   changeFavouriteStatusTodolist: () => void;
   changeCompletedStatusTodolist: () => void;
 };
+
+export type DeletePortalPropsType = {
+  isShowDeleteWindow: boolean;
+  deleteTodolist: () => void;
+  id: string;
+};
+
+export type DeleteWindowPropsType = {
+  deleteTodolist: () => void;
+  id: string;
+};
