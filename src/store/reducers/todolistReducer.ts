@@ -1,7 +1,8 @@
 import {
-  CHANGE_FAVOURITE_STATUS,
   ADD_TODOLIST,
   AllAppActionType,
+  CHANGE_COMPLETED_STATUS,
+  CHANGE_FAVOURITE_STATUS,
   DELETE_TODOLIST,
   GET_TODOLISTS,
 } from 'store/actions';
@@ -23,6 +24,10 @@ export const todolistReducer = (
     case CHANGE_FAVOURITE_STATUS:
       return state.map(td =>
         td.id === action.payload.id ? { ...td, isFavourite: action.payload.value } : td,
+      );
+    case CHANGE_COMPLETED_STATUS:
+      return state.map(td =>
+        td.id === action.payload.id ? { ...td, isCompleted: action.payload.value } : td,
       );
     default:
       return state;

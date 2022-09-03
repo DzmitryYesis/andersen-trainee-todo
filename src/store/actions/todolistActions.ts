@@ -3,7 +3,8 @@ import { TodolistType } from 'types';
 export const GET_TODOLISTS = 'TODOLISTS/GET-TODOLISTS';
 export const ADD_TODOLIST = 'TODOLISTS/ADD-TODOLIST';
 export const DELETE_TODOLIST = 'TODOLISTS/DELETE-TODOLIST';
-export const CHANGE_FAVOURITE_STATUS = 'TODOLISTS/ADD-TO-FAVOURITE';
+export const CHANGE_FAVOURITE_STATUS = 'TODOLISTS/CHANGE-FAVOURITE-STATUS';
+export const CHANGE_COMPLETED_STATUS = 'TODOLISTS/CHANGE-COMPLETED-STATUS';
 
 export const getTodolistsAC = (todolists: TodolistType[]) =>
   ({
@@ -32,6 +33,15 @@ export const deleteTodolistAC = (id: string) =>
 export const changeFavouriteStatusAC = (id: string, value: boolean) =>
   ({
     type: CHANGE_FAVOURITE_STATUS,
+    payload: {
+      id,
+      value,
+    },
+  } as const);
+
+export const changeCompletedStatusAC = (id: string, value: boolean) =>
+  ({
+    type: CHANGE_COMPLETED_STATUS,
     payload: {
       id,
       value,

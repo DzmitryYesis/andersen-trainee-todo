@@ -10,7 +10,12 @@ import './App.css';
 import { InputForAdd, Menu } from 'components';
 import { getTodolistsAC, isShowPopUpAC } from 'store/actions';
 import { selectTodolists } from 'store/selectors';
-import { addTodolistTC, deleteTodolistTC, changeFavouriteStatusTC } from 'store/thunks';
+import {
+  addTodolistTC,
+  deleteTodolistTC,
+  changeFavouriteStatusTC,
+  changeCompletedStatusTC,
+} from 'store/thunks';
 
 const App = (): ReactElement => {
   const dispatch = useDispatch();
@@ -31,6 +36,11 @@ const App = (): ReactElement => {
     dispatch(changeFavouriteStatusTC(id, !value));
   };
 
+  const changeCompletedStatusTodolist = (id: string, value: boolean): void => {
+    // @ts-ignore
+    dispatch(changeCompletedStatusTC(id, !value));
+  };
+
   useEffect(() => {
     fetch('https://6311e8fc19eb631f9d7b7f47.mockapi.io/todosYesis')
       .then(res => res.json())
@@ -49,10 +59,10 @@ const App = (): ReactElement => {
           {td.isFavourite ? (
             <>
               <img className="starImg" src={star} alt="favourite" />
-              <span>{td.text}</span>
+              <span className={td.isCompleted ? 'is-done' : ''}>{td.text}</span>
             </>
           ) : (
-            <span>{td.text}</span>
+            <span className={td.isCompleted ? 'is-done' : ''}>{td.text}</span>
           )}
           <button type="button" onClick={() => deleteTodolist(td.id)}>
             Delete
@@ -62,6 +72,12 @@ const App = (): ReactElement => {
             onClick={() => changeFavouriteStatusTodolist(td.id, td.isFavourite)}
           >
             Favourite
+          </button>
+          <button
+            type="button"
+            onClick={() => changeCompletedStatusTodolist(td.id, td.isCompleted)}
+          >
+            Completed
           </button>
         </div>
       ))}

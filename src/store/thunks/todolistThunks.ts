@@ -3,6 +3,7 @@ import { Dispatch } from 'redux';
 import {
   addTodolistAC,
   AllAppActionType,
+  changeCompletedStatusAC,
   changeFavouriteStatusAC,
   deleteTodolistAC,
 } from 'store/actions';
@@ -45,5 +46,21 @@ export const changeFavouriteStatusTC =
       .then(res => res.json())
       .then(data => {
         dispatch(changeFavouriteStatusAC(data.id, data.isFavourite));
+      });
+  };
+
+export const changeCompletedStatusTC =
+  (id: string, value: boolean) => (dispatch: Dispatch<AllAppActionType>) => {
+    fetch(`https://6311e8fc19eb631f9d7b7f47.mockapi.io/todosYesis/${id}`, {
+      method: 'PUT',
+      headers: {
+        Accept: 'application/json, text/plain, */*',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ isCompleted: value }),
+    })
+      .then(res => res.json())
+      .then(data => {
+        dispatch(changeCompletedStatusAC(data.id, data.isCompleted));
       });
   };
