@@ -1,9 +1,10 @@
 import { ReactElement } from 'react';
 
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
-import { isShowPopUpAC } from 'store/actions';
+import { isEditAC, isShowPopUpAC } from 'store/actions';
 import './Buttons.css';
+import { selectTodolists } from 'store/selectors';
 
 type MenuAndButtonsPropsType = {
   id: string;
@@ -19,19 +20,45 @@ export const Buttons = ({
   changeCompletedStatusTodolist,
 }: MenuAndButtonsPropsType): ReactElement => {
   const dispatch = useDispatch();
+  // @ts-ignore
+  const { isCompleted, isFavourite } = useSelector(selectTodolists).find(
+    td => td.id === id,
+  );
+
+  const handleEditTitle = (): void => {
+    dispatch(isEditAC(id, true));
+    dispatch(isShowPopUpAC(id, false));
+  };
+
+  const handleCompletedChange = (): void => {
+    changeCompletedStatusTodolist();
+    dispatch(isShowPopUpAC(id, false));
+  };
+
+  const handleFavouriteChange = (): void => {
+    changeFavouriteStatusTodolist();
+    dispatch(isShowPopUpAC(id, false));
+  };
+
+  const handleCancelMenu = (): void => {
+    dispatch(isShowPopUpAC(id, false));
+  };
+
   return (
     <div className="menu">
-      <button type="button" onClick={changeCompletedStatusTodolist}>
-        In Work
+      <button type="button" onClick={handleCompletedChange}>
+        {isCompleted ? 'Return to work' : 'Done'}
       </button>
-      <button type="button" onClick={changeFavouriteStatusTodolist}>
-        Favourite
+      <button type="button" onClick={handleFavouriteChange}>
+        {isFavourite ? 'Remove from favorites' : 'Add to favorites'}
       </button>
-      <button type="button">Edit</button>
+      <button type="button" onClick={handleEditTitle}>
+        Edit
+      </button>
       <button type="button" onClick={deleteTodolist}>
         Delete
       </button>
-      <button type="button" onClick={() => dispatch(isShowPopUpAC(id, false))}>
+      <button type="button" onClick={handleCancelMenu}>
         Cancel
       </button>
     </div>

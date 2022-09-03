@@ -56,7 +56,9 @@ export const Todolist = ({
     <div key={id}>
       {isFavourite ? (
         <>
-          <img className="starImg" src={star} alt="favourite" />
+          <button type="button" onClick={changeFavouriteStatusTodolist}>
+            <img className="starImg" src={star} alt="favourite" />
+          </button>
           <SpanForChangeTitle
             isEdit={isEdit}
             title={text}
