@@ -1,13 +1,39 @@
 import { ReactElement } from 'react';
 
-// @ts-ignore
-import style from './Buttons.module.css';
+import { useDispatch } from 'react-redux';
 
-export const Buttons = (): ReactElement => (
-  <div className={style.menu}>
-    <button type="button">In Work</button>
-    <button type="button">Favourite</button>
-    <button type="button">Edit</button>
-    <button type="button">Cancel</button>
-  </div>
-);
+import { isShowPopUpAC } from 'store/actions';
+import './Buttons.css';
+
+type MenuAndButtonsPropsType = {
+  id: string;
+  deleteTodolist: () => void;
+  changeFavouriteStatusTodolist: () => void;
+  changeCompletedStatusTodolist: () => void;
+};
+
+export const Buttons = ({
+  id,
+  deleteTodolist,
+  changeFavouriteStatusTodolist,
+  changeCompletedStatusTodolist,
+}: MenuAndButtonsPropsType): ReactElement => {
+  const dispatch = useDispatch();
+  return (
+    <div className="menu">
+      <button type="button" onClick={changeCompletedStatusTodolist}>
+        In Work
+      </button>
+      <button type="button" onClick={changeFavouriteStatusTodolist}>
+        Favourite
+      </button>
+      <button type="button">Edit</button>
+      <button type="button" onClick={deleteTodolist}>
+        Delete
+      </button>
+      <button type="button" onClick={() => dispatch(isShowPopUpAC(id, false))}>
+        Cancel
+      </button>
+    </div>
+  );
+};

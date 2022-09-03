@@ -4,3 +4,7 @@ export type TodolistType = {
   isCompleted: boolean;
   id: string;
 };
+
+export type TodolistDomainType = TodolistType & {
+  isShowPopUp: boolean;
+};

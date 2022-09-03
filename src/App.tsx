@@ -2,20 +2,12 @@ import React, { ReactElement, useEffect } from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
 
-// @ts-ignore
-import star from './icons/star.svg';
-
 import './App.css';
 
-import { InputForAdd, Menu } from 'components';
-import { getTodolistsAC, isShowPopUpAC } from 'store/actions';
+import { InputForAdd, Todolist } from 'components';
+import { getTodolistsAC } from 'store/actions';
 import { selectTodolists } from 'store/selectors';
-import {
-  addTodolistTC,
-  deleteTodolistTC,
-  changeFavouriteStatusTC,
-  changeCompletedStatusTC,
-} from 'store/thunks';
+import { addTodolistTC } from 'store/thunks';
 
 const App = (): ReactElement => {
   const dispatch = useDispatch();
@@ -25,21 +17,26 @@ const App = (): ReactElement => {
     // @ts-ignore
     dispatch(addTodolistTC(newTitle));
   };
-
-  const deleteTodolist = (id: string): void => {
-    // @ts-ignore
-    dispatch(deleteTodolistTC(id));
-  };
-
-  const changeFavouriteStatusTodolist = (id: string, value: boolean): void => {
-    // @ts-ignore
-    dispatch(changeFavouriteStatusTC(id, !value));
-  };
-
-  const changeCompletedStatusTodolist = (id: string, value: boolean): void => {
-    // @ts-ignore
-    dispatch(changeCompletedStatusTC(id, !value));
-  };
+  //
+  // const deleteTodolist = (id: string): void => {
+  //   // @ts-ignore
+  //   dispatch(deleteTodolistTC(id));
+  // };
+  //
+  // const changeFavouriteStatusTodolist = (id: string, value: boolean): void => {
+  //   // @ts-ignore
+  //   dispatch(changeFavouriteStatusTC(id, !value));
+  // };
+  //
+  // const changeCompletedStatusTodolist = (id: string, value: boolean): void => {
+  //   // @ts-ignore
+  //   dispatch(changeCompletedStatusTC(id, !value));
+  // };
+  //
+  // const changeTodolistTitle = (id: string, newTitle: string): void => {
+  //   // @ts-ignore
+  //   dispatch(changeTodolistTitleTC(id, newTitle));
+  // };
 
   useEffect(() => {
     fetch('https://6311e8fc19eb631f9d7b7f47.mockapi.io/todosYesis')
@@ -51,39 +48,54 @@ const App = (): ReactElement => {
     <div className="App">
       Todolist test 2
       <InputForAdd item={addTodolist} />
-      <button type="button" onClick={() => dispatch(isShowPopUpAC(true))}>
-        Menu
-      </button>
+      {/* <button type="button" onClick={() => dispatch(isShowPopUpAC(true))}> */}
+      {/*  Menu */}
+      {/* </button> */}
       {state?.map(td => (
-        <div key={td.id}>
-          {td.isFavourite ? (
-            <>
-              <img className="starImg" src={star} alt="favourite" />
-              <span className={td.isCompleted ? 'is-done' : ''}>{td.text}</span>
-            </>
-          ) : (
-            <span className={td.isCompleted ? 'is-done' : ''}>{td.text}</span>
-          )}
-          <button type="button" onClick={() => deleteTodolist(td.id)}>
-            Delete
-          </button>
-          <button
-            type="button"
-            onClick={() => changeFavouriteStatusTodolist(td.id, td.isFavourite)}
-          >
-            Favourite
-          </button>
-          <button
-            type="button"
-            onClick={() => changeCompletedStatusTodolist(td.id, td.isCompleted)}
-          >
-            Completed
-          </button>
-        </div>
+        <Todolist
+          key={td.id}
+          id={td.id}
+          text={td.text}
+          isFavourite={td.isFavourite}
+          isCompleted={td.isCompleted}
+          isShowPopUp={td.isShowPopUp}
+        />
+        // <div key={td.id}>
+        //   {td.isFavourite ? (
+        //     <>
+        //       <img className="starImg" src={star} alt="favourite" />
+        //       <SpanForChangeTitle
+        //         title={td.text}
+        //         onChange={changeTodolistTitle}
+        //         isCompleted={td.isCompleted}
+        //         id={td.id}
+        //       />
+        //     </>
+        //   ) : (
+        //     <SpanForChangeTitle
+        //       title={td.text}
+        //       onChange={changeTodolistTitle}
+        //       isCompleted={td.isCompleted}
+        //       id={td.id}
+        //     />
+        //   )}
+        //   <button type="button" onClick={() => deleteTodolist(td.id)}>
+        //     Delete
+        //   </button>
+        //   <button
+        //     type="button"
+        //     onClick={() => changeFavouriteStatusTodolist(td.id, td.isFavourite)}
+        //   >
+        //     Favourite
+        //   </button>
+        //   <button
+        //     type="button"
+        //     onClick={() => changeCompletedStatusTodolist(td.id, td.isCompleted)}
+        //   >
+        //     Completed
+        //   </button>
+        // </div>
       ))}
-      <div>
-        <Menu />
-      </div>
     </div>
   );
 };

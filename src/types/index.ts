@@ -1,3 +1,3 @@
-export type { TodolistType } from './todolistTypes';
+export type { TodolistType, TodolistDomainType } from './todolistTypes';
 
 export type { MenuType } from './menuTypes';

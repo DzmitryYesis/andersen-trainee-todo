@@ -1,3 +1,1 @@
-export type MenuType = {
-  isShowPopUP: boolean;
-};
+export type MenuType = {};

@@ -1,17 +1,35 @@
 import { ReactElement } from 'react';
 
 import ReactDOM from 'react-dom';
-import { useSelector } from 'react-redux';
 
-import { Buttons } from 'components/menu/buttons/Buttons';
-import { selectIsShowPopUp } from 'store/selectors';
+import { Buttons } from 'components';
 
-export const Menu = (): ReactElement | null => {
-  const isShowPopUp = useSelector(selectIsShowPopUp);
+type MenuAndButtonsPropsType = {
+  id: string;
+  isShowPopUp: boolean;
+  deleteTodolist: () => void;
+  changeFavouriteStatusTodolist: () => void;
+  changeCompletedStatusTodolist: () => void;
+};
 
+export const Menu = ({
+  id,
+  isShowPopUp,
+  deleteTodolist,
+  changeFavouriteStatusTodolist,
+  changeCompletedStatusTodolist,
+}: MenuAndButtonsPropsType): ReactElement | null => {
   const portal = document.getElementById('menu');
   if (portal && isShowPopUp) {
-    return ReactDOM.createPortal(<Buttons />, portal);
+    return ReactDOM.createPortal(
+      <Buttons
+        id={id}
+        deleteTodolist={deleteTodolist}
+        changeFavouriteStatusTodolist={changeFavouriteStatusTodolist}
+        changeCompletedStatusTodolist={changeCompletedStatusTodolist}
+      />,
+      portal,
+    );
   }
   return null;
 };

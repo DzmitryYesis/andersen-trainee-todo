@@ -5,14 +5,14 @@ export {
   CHANGE_FAVOURITE_STATUS,
   CHANGE_COMPLETED_STATUS,
   CHANGE_TODOLIST_TITLE,
+  IS_SHOW_POP_UP,
   getTodolistsAC,
   addTodolistAC,
   deleteTodolistAC,
   changeFavouriteStatusAC,
   changeCompletedStatusAC,
   changeTodolistTitleAC,
+  isShowPopUpAC,
 } from './todolistActions';
-
-export { IS_SHOW_POP_UP, isShowPopUpAC } from './menuActions';
 
 export type { AllAppActionType } from './actionTypes';
