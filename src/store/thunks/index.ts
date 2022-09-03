@@ -1,1 +1,5 @@
-export { addTodolistTC, deleteTodolistTC } from './todolistThunks';
+export {
+  addTodolistTC,
+  deleteTodolistTC,
+  changeFavouriteStatusTC,
+} from './todolistThunks';

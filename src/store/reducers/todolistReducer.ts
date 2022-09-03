@@ -1,4 +1,5 @@
 import {
+  CHANGE_FAVOURITE_STATUS,
   ADD_TODOLIST,
   AllAppActionType,
   DELETE_TODOLIST,
@@ -19,6 +20,10 @@ export const todolistReducer = (
       return [...state, action.payload.todolist];
     case DELETE_TODOLIST:
       return state.filter(td => td.id !== action.payload.id);
+    case CHANGE_FAVOURITE_STATUS:
+      return state.map(td =>
+        td.id === action.payload.id ? { ...td, isFavourite: action.payload.value } : td,
+      );
     default:
       return state;
   }
