@@ -6,6 +6,7 @@ export {
   CHANGE_COMPLETED_STATUS,
   CHANGE_TODOLIST_TITLE,
   IS_SHOW_POP_UP,
+  IS_EDIT,
   getTodolistsAC,
   addTodolistAC,
   deleteTodolistAC,
@@ -13,6 +14,7 @@ export {
   changeCompletedStatusAC,
   changeTodolistTitleAC,
   isShowPopUpAC,
+  isEditAC,
 } from './todolistActions';
 
 export type { AllAppActionType } from './actionTypes';

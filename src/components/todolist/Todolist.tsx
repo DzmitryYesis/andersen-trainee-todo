@@ -19,6 +19,7 @@ type TodolistPropsType = {
   isFavourite: boolean;
   isCompleted: boolean;
   isShowPopUp: boolean;
+  isEdit: boolean;
 };
 
 export const Todolist = ({
@@ -27,6 +28,7 @@ export const Todolist = ({
   isFavourite,
   isCompleted,
   isShowPopUp,
+  isEdit,
 }: TodolistPropsType): ReactElement => {
   const dispatch = useDispatch();
 
@@ -56,6 +58,7 @@ export const Todolist = ({
         <>
           <img className="starImg" src={star} alt="favourite" />
           <SpanForChangeTitle
+            isEdit={isEdit}
             title={text}
             onChange={changeTodolistTitle}
             isCompleted={isCompleted}
@@ -63,6 +66,7 @@ export const Todolist = ({
         </>
       ) : (
         <SpanForChangeTitle
+          isEdit={isEdit}
           title={text}
           onChange={changeTodolistTitle}
           isCompleted={isCompleted}
@@ -71,21 +75,6 @@ export const Todolist = ({
       <button type="button" onClick={() => dispatch(isShowPopUpAC(id, true))}>
         Menu
       </button>
-      {/* <button type="button" onClick={() => deleteTodolist(id)}> */}
-      {/*  Delete */}
-      {/* </button> */}
-      {/* <button */}
-      {/*  type="button" */}
-      {/*  onClick={() => changeFavouriteStatusTodolist(id, isFavourite)} */}
-      {/* > */}
-      {/*  Favourite */}
-      {/* </button> */}
-      {/* <button */}
-      {/*  type="button" */}
-      {/*  onClick={() => changeCompletedStatusTodolist(id, isCompleted)} */}
-      {/* > */}
-      {/*  Completed */}
-      {/* </button> */}
       <Menu
         id={id}
         isShowPopUp={isShowPopUp}

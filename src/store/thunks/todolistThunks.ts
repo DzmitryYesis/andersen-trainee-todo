@@ -7,6 +7,7 @@ import {
   changeFavouriteStatusAC,
   changeTodolistTitleAC,
   deleteTodolistAC,
+  isEditAC,
 } from 'store/actions';
 
 export const addTodolistTC =
@@ -79,5 +80,6 @@ export const changeTodolistTitleTC =
       .then(res => res.json())
       .then(data => {
         dispatch(changeTodolistTitleAC(data.id, data.text));
+        dispatch(isEditAC(id, false));
       });
   };

@@ -6,6 +6,7 @@ import {
   CHANGE_TODOLIST_TITLE,
   DELETE_TODOLIST,
   GET_TODOLISTS,
+  IS_EDIT,
   IS_SHOW_POP_UP,
 } from 'store/actions';
 import { TodolistDomainType } from 'types';
@@ -18,9 +19,16 @@ export const todolistReducer = (
 ): TodolistDomainType[] => {
   switch (action.type) {
     case GET_TODOLISTS:
-      return action.payload.todolists.map(td => ({ ...td, isShowPopUp: false }));
+      return action.payload.todolists.map(td => ({
+        ...td,
+        isShowPopUp: false,
+        isEdit: false,
+      }));
     case ADD_TODOLIST:
-      return [...state, { ...action.payload.todolist, isShowPopUp: false }];
+      return [
+        ...state,
+        { ...action.payload.todolist, isShowPopUp: false, isEdit: false },
+      ];
     case DELETE_TODOLIST:
       return state.filter(td => td.id !== action.payload.id);
     case CHANGE_FAVOURITE_STATUS:
@@ -38,6 +46,10 @@ export const todolistReducer = (
     case IS_SHOW_POP_UP:
       return state.map(td =>
         td.id === action.payload.id ? { ...td, isShowPopUp: action.payload.value } : td,
+      );
+    case IS_EDIT:
+      return state.map(td =>
+        td.id === action.payload.id ? { ...td, isEdit: action.payload.value } : td,
       );
     default:
       return state;

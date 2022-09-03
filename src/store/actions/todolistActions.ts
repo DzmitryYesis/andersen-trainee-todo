@@ -7,6 +7,7 @@ export const CHANGE_FAVOURITE_STATUS = 'TODOLISTS/CHANGE-FAVOURITE-STATUS';
 export const CHANGE_COMPLETED_STATUS = 'TODOLISTS/CHANGE-COMPLETED-STATUS';
 export const CHANGE_TODOLIST_TITLE = 'TODOLISTS/CHANGE-TODOLIST-TITLE';
 export const IS_SHOW_POP_UP = 'TODOLISTS/IS-SHOW-POP-UP';
+export const IS_EDIT = 'TODOLISTS/IS-EDIT';
 
 export const getTodolistsAC = (todolists: TodolistType[]) =>
   ({
@@ -58,9 +59,19 @@ export const changeTodolistTitleAC = (id: string, value: string) =>
       value,
     },
   } as const);
+
 export const isShowPopUpAC = (id: string, value: boolean) =>
   ({
     type: IS_SHOW_POP_UP,
+    payload: {
+      id,
+      value,
+    },
+  } as const);
+
+export const isEditAC = (id: string, value: boolean) =>
+  ({
+    type: IS_EDIT,
     payload: {
       id,
       value,
