@@ -6,13 +6,22 @@
     position: fixed;
     right: 35%;
     background: #935454;
-    padding: 12px 0 18px 16px;
+    padding: 0 0 18px 16px;
     color: #092878;
     font-size: 16px;
     letter-spacing: 0.3px;
     display: flex;
-    flex-direction: row;
-    justify-content: space-around;
+    flex-direction: column;
+    justify-content: space-between;
     align-items: center;
     z-index: 999;
+}
+
+.buttonX {
+    height: 30px;
+    width: 30px;
+    border-radius: 8px;
+    background-color: red;
+    color: white;
+    margin-left: 220px;
 }
