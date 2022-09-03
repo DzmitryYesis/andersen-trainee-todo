@@ -3,14 +3,7 @@ import { ReactElement } from 'react';
 import ReactDOM from 'react-dom';
 
 import { Buttons } from 'components';
-
-type MenuAndButtonsPropsType = {
-  id: string;
-  isShowPopUp: boolean;
-  deleteTodolist: () => void;
-  changeFavouriteStatusTodolist: () => void;
-  changeCompletedStatusTodolist: () => void;
-};
+import { MenuAndButtonsPropsType } from 'types';
 
 export const Menu = ({
   id,

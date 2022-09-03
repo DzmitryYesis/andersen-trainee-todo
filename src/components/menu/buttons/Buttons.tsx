@@ -2,16 +2,11 @@ import { ReactElement } from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
 
+import { Button } from 'components';
 import { isEditAC, isShowPopUpAC } from 'store/actions';
 import './Buttons.css';
 import { selectTodolists } from 'store/selectors';
-
-type MenuAndButtonsPropsType = {
-  id: string;
-  deleteTodolist: () => void;
-  changeFavouriteStatusTodolist: () => void;
-  changeCompletedStatusTodolist: () => void;
-};
+import { MenuAndButtonsPropsType } from 'types';
 
 export const Buttons = ({
   id,
@@ -25,42 +20,32 @@ export const Buttons = ({
     td => td.id === id,
   );
 
+  const isCompletedText = isCompleted ? 'Return to work' : 'Done';
+  const isFavoriteText = isFavourite ? 'Remove from favorites' : 'Add to favorites';
+
   const handleEditTitle = (): void => {
     dispatch(isEditAC(id, true));
     dispatch(isShowPopUpAC(id, false));
   };
-
   const handleCompletedChange = (): void => {
     changeCompletedStatusTodolist();
     dispatch(isShowPopUpAC(id, false));
   };
-
   const handleFavouriteChange = (): void => {
     changeFavouriteStatusTodolist();
     dispatch(isShowPopUpAC(id, false));
   };
-
   const handleCancelMenu = (): void => {
     dispatch(isShowPopUpAC(id, false));
   };
 
   return (
     <div className="menu">
-      <button type="button" onClick={handleCompletedChange}>
-        {isCompleted ? 'Return to work' : 'Done'}
-      </button>
-      <button type="button" onClick={handleFavouriteChange}>
-        {isFavourite ? 'Remove from favorites' : 'Add to favorites'}
-      </button>
-      <button type="button" onClick={handleEditTitle}>
-        Edit
-      </button>
-      <button type="button" onClick={deleteTodolist}>
-        Delete
-      </button>
-      <button type="button" onClick={handleCancelMenu}>
-        Cancel
-      </button>
+      <Button title={isCompletedText} onClick={handleCompletedChange} />
+      <Button title={isFavoriteText} onClick={handleFavouriteChange} />
+      <Button title="Edit" onClick={handleEditTitle} />
+      <Button title="Delete" onClick={deleteTodolist} />
+      <Button title="Cancel" onClick={handleCancelMenu} />
     </div>
   );
 };

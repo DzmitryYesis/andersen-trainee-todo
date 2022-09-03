@@ -22,7 +22,7 @@ export const SpanForChangeTitle = ({
     }
   };
   return !isEdit ? (
-    <span className={isCompleted ? 'is-done' : ''}>{newTitle}</span>
+    <span className={isCompleted ? 'isDone' : 'notIsDone'}>{newTitle}</span>
   ) : (
     <input
       value={newTitle}

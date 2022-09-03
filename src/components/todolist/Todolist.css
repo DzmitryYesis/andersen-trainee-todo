@@ -11,6 +11,7 @@
 }
 
 .buttonStar {
+    padding-top: 5px;
     background-color: white;
     border: white;
 }
@@ -18,4 +19,17 @@
 .starImg {
     height: 25px;
     width: 25px;
+}
+
+.isDone {
+    padding-top: 8px;
+    width: 200px;
+    opacity: 0.5;
+    font-size: 15px;
+}
+
+.notIsDone {
+    padding-top: 8px;
+    width: 200px;
+    font-size: 15px;
 }

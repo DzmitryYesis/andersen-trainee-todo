@@ -23,3 +23,11 @@ export type SpanChangeTitlePropsType = {
   onChange: (newTitle: string) => void;
   isCompleted: boolean;
 };
+
+export type MenuAndButtonsPropsType = {
+  id: string;
+  isShowPopUp?: boolean;
+  deleteTodolist: () => void;
+  changeFavouriteStatusTodolist: () => void;
+  changeCompletedStatusTodolist: () => void;
+};

@@ -7,4 +7,5 @@ export type {
   ButtonTypeProps,
   TodolistPropsType,
   SpanChangeTitlePropsType,
+  MenuAndButtonsPropsType,
 } from './componentTypes';
